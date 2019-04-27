@@ -4,10 +4,10 @@ apply plugin: "java"
 //          Set to current Sherlock version found in ./libs/
 //          Both normal and dev jars must be in ./libs/
 //================================================================
-project.ext.sherlockVersion = "0.3.45"
+project.ext.sherlockVersion = "0.5.1"
 
 
-archivesBaseName = "Sherlock-Test"
+archivesBaseName = "Sherlock-Extra"
 group = 'uk.ac.warwick.dcs.sherlock'
 version = "1.0"
 
@@ -21,10 +21,14 @@ repositories {
     flatDir {
         dirs "${project.libsDir}"
     }
+    jcenter()
+    mavenCentral()
 }
 
 dependencies {
     compile name: "Sherlock-${project.sherlockVersion}-dev"
+
+    compile 'org.antlr:antlr4-runtime:4.7.2'
 }
 
 task run(dependsOn:jar) {
